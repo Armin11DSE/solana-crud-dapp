@@ -1,5 +1,5 @@
 {
-  "name": "legacy-next-tailwind-counter",
+  "name": "legacy-next-tailwind-crud",
   "version": "0.0.0",
   "private": true,
   "scripts": {
@@ -25,7 +25,7 @@
     "@solana/wallet-adapter-base": "0.9.26",
     "@solana/wallet-adapter-react": "0.15.38",
     "@solana/wallet-adapter-react-ui": "0.9.38",
-    "@solana/web3.js": "1.98.2",
+    "@solana/web3.js": "^1.98.2",
     "@tanstack/react-query": "^5.74.7",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",

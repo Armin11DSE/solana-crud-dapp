@@ -3,19 +3,19 @@
 import { useWallet } from '@solana/wallet-adapter-react'
 import { WalletButton } from '../solana/solana-provider'
 import { ExplorerLink } from '../cluster/cluster-ui'
-import { useCounterProgram } from './crud-data-access'
-import { CounterCreate, CounterList } from './crud-ui'
+import { useCrudProgram } from './crud-data-access'
+import { CrudCreate, CrudList } from './crud-ui'
 import { AppHero } from '../app-hero'
 import { ellipsify } from '@/lib/utils'
 
-export default function CounterFeature() {
+export default function CrudFeature() {
   const { publicKey } = useWallet()
-  const { programId } = useCounterProgram()
+  const { programId } = useCrudProgram()
 
   return publicKey ? (
     <div>
       <AppHero
-        title="Counter"
+        title="Crud"
         subtitle={
           'Create a new account by clicking the "Create" button. The state of a account is stored on-chain and can be manipulated by calling the program\'s methods (increment, decrement, set, and close).'
         }
@@ -23,9 +23,9 @@ export default function CounterFeature() {
         <p className="mb-6">
           <ExplorerLink path={`account/${programId}`} label={ellipsify(programId.toString())} />
         </p>
-        <CounterCreate />
+        <CrudCreate />
       </AppHero>
-      <CounterList />
+      <CrudList />
     </div>
   ) : (
     <div className="max-w-4xl mx-auto">

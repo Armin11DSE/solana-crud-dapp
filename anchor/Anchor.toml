@@ -1,12 +1,12 @@
 [toolchain]
-package_manager = "yarn"
+package_manager = "npm"
 
 [features]
 resolution = true
 skip-lint = false
 
 [programs.localnet]
-counter = "FqzkXZdwYjurnUKetJCAvaUw5WAqbwzU6gZEwydeEfqS"
+crud = "BiSdSbq3L9pbGCak8Fj4V6N47WksjV8GjguPuhCNn6Pa"
 
 [registry]
 url = "https://api.apr.dev"

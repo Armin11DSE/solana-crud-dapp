@@ -1,5 +1,5 @@
-import CounterFeature from '@/components/crud/crud-feature'
+import CrudFeature from '@/components/crud/crud-feature'
 
 export default function Page() {
-  return <CounterFeature />
+  return <CrudFeature />
 }

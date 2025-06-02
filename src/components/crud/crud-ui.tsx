@@ -25,7 +25,7 @@ export function CrudCreate() {
   }
 
   return (
-    <div className="max-w-md mx-auto p-6  rounded-2xl shadow-lg space-y-6">
+    <div className="max-w-md mx-auto p-6 rounded-2xl shadow-lg space-y-6">
       <div>
         <label className="block text-sm font-medium mb-1">Title</label>
         <input
@@ -57,7 +57,6 @@ export function CrudCreate() {
         </button>
       </div>
     </div>
-
   )
 }
 
@@ -124,28 +123,55 @@ function CrudCard({ account }: { account: PublicKey }) {
   }
 
   return accountQuery.isLoading ? (
-    <span className='loading, loading-spinner loading-lg'></span>
+    <div className="flex justify-center items-center py-12">
+      <span className="loading loading-spinner loading-lg text-primary" />
+    </div>
   ) : (
-    <Card>
-      <CardHeader>
-        <CardTitle onClick={() => accountQuery.refetch()}>{accountQuery.data?.title}</CardTitle>
-        <CardDescription>{account.toString()}</CardDescription>
+    <Card className="max-w-md mx-auto p-6 rounded-2xl shadow-md bg-cyan-950 space-y-4">
+      <CardHeader className="pb-0">
+        <CardTitle
+          className="text-xl font-bold cursor-pointer hover:underline transition"
+          onClick={() => accountQuery.refetch()}
+        >
+          {accountQuery.data?.title}
+        </CardTitle>
+        <CardDescription className="text-sm text-gray-500 break-all">
+          {account.toString()}
+        </CardDescription>
       </CardHeader>
-      <CardContent>
-        <p>{accountQuery.data?.message}</p>
-        <div className="form-control mt-6">
-          <textarea placeholder='message'
+
+      <CardContent className="space-y-4 pt-0">
+        <p className="text-gray-500">{accountQuery.data?.message}</p>
+
+        <div className="space-y-2">
+          <label className="block text-sm font-medium text-white">Edit Message</label>
+          <textarea
+            placeholder="Write your message..."
             value={message}
             onChange={(e) => setMessage(e.target.value)}
-            className='textarea textarea-bordered' />
-          <button className="btn btn-primary mr-2" onClick={handleSubmit} disabled={updateEntry.isPending || !isFormValid}>
-            Update
+            className="w-full px-4 py-2 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition min-h-[100px]"
+          />
+        </div>
+
+        <div className="flex justify-between gap-4 pt-2">
+          <button
+            className="flex-1 py-2 px-4 bg-blue-950 text-white font-semibold rounded-xl hover:cursor-pointer transition disabled:opacity-50 disabled:cursor-auto"
+            onClick={handleSubmit}
+            disabled={updateEntry.isPending || !isFormValid}
+          >
+            {updateEntry.isPending ? "Updating..." : "Update"}
           </button>
-          <button className="btn btn-danger" onClick={handleDelete} disabled={deleteEntry.isPending}>
-            Delete
+
+          <button
+            className="flex-1 py-2 px-4 bg-red-500 text-white font-semibold rounded-xl hover:bg-red-600 transition disabled:opacity-50 disabled:cursor-not-allowed"
+            onClick={handleDelete}
+            disabled={deleteEntry.isPending}
+          >
+            {deleteEntry.isPending ? "Deleting..." : "Delete"}
           </button>
         </div>
       </CardContent>
     </Card>
-  )
+  );
+
 }

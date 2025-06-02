@@ -36,7 +36,7 @@ export function useCrudProgram() {
 
   const createEntry = useMutation<string, Error, CreateEntryArgs>({
     mutationKey: ['journalEntry', 'create', { cluster }],
-    mutationFn: async ({ title, message, owner }) => {
+    mutationFn: async ({ title, message }) => {
       return program.methods.createJournalEntry(title, message).rpc();
     },
     onSuccess: (signature) => {
@@ -69,7 +69,7 @@ export function useCrudProgramAccount({ account }: { account: PublicKey }) {
 
   const updateEntry = useMutation<string, Error, CreateEntryArgs>({
     mutationKey: ['journalEntry', 'update', { cluster }],
-    mutationFn: async ({ title, message, owner }) => {
+    mutationFn: async ({ title, message }) => {
       return program.methods.updateJournalEntry(title, message).rpc();
     },
     onSuccess: (signature) => {

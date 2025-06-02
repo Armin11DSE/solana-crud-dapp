@@ -16,7 +16,7 @@ export function getCrudProgramId(cluster: Cluster) {
   switch (cluster) {
     case 'devnet':
     case 'testnet':
-      return new PublicKey('BiSdSbq3L9pbGCak8Fj4V6N47WksjV8GjguPuhCNn6Pa')
+      return new PublicKey('2MQekGaU8sjDA2fotoL2dwtuzMbq5XqYRjTB3Xm61kZp')
     case 'mainnet-beta':
     default:
       return CRUD_PROGRAM_ID

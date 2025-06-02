@@ -1,9 +1,25 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [
-`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Solana Journal CRUD dApp
+
+A decentralized application (dApp) built on Solana using the Anchor framework, enabling users to perform Create, Read, Update, and Delete (CRUD) operations on journal entries. This project was bootstrapped with `create-solana-dapp` and extends the counter example.
+
+## Prerequisites
+
+Ensure you have the following installed:
+
+- [Node.js](https://nodejs.org/) (>= 18)
+- [Rust & Cargo](https://www.rust-lang.org/tools/install)
+- [Solana CLI](https://docs.solana.com/cli/install-solana-cli)
+- [Anchor CLI](https://book.anchor-lang.com/getting_started/installation.html) (>= 0.29.0)
 
 ## Getting Started
 
-First, run the development server:
+Install dependencies:
+
+```bash
+npm install
+```
+
+Run the development server:
 
 ```bash
 npm run dev
@@ -15,25 +31,37 @@ pnpm dev
 bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Running the Solana Program Locally
 
-## Learn More
+1. **Build the program** (inside the `anchor/` directory):
 
-To learn more about Next.js, take a look at the following resources:
+```bash
+anchor build
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+2. **Start the local validator** (from `anchor/target/`):
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions
-are welcome!
+```bash
+solana-test-validator
+```
 
-## Deploy on Vercel
+3. **Deploy the program** (back in the `anchor/` directory):
 
-The easiest way to deploy your Next.js app is to use
-the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme)
-from the creators of Next.js.
+```bash
+anchor deploy --provider.cluster localnet
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for
-more details.
+4. **Sync keys (if needed)**:
+
+```bash
+anchor keys sync
+```
+
+If any changes are made, re-run `anchor build` and `anchor deploy`.
+
+Visit [http://localhost:3000/crud](http://localhost:3000/crud) to use the journal CRUD UI.
+
+## Credits
+
+Based on [Solana Developer Bootcamp 2024 - Learn Blockchain and Full Stack Web3 Development - Projects 1-9](https://www.youtube.com/watch?v=amAq-WHAFs8)
